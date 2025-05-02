@@ -1,15 +1,15 @@
 // src/app/page.tsx
 import React from "react";
 import Hero from "@/components/Hero";
-import Section from "@/components/Section";
+import ChatWindow from "@/components/chat/ChatWindow";
 
 export default function Home() {
   return (
-    <>
+    <div className="container mx-auto px-4 py-8">
       <Hero />
-      <Section title="Projects">
-        <p>Here&apos;s where I&apos;ll showcase the stuff I&apos;ve built.</p>
-      </Section>
-    </>
+      <div className="mt-8">
+        <ChatWindow />
+      </div>
+    </div>
   );
 }

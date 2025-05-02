@@ -36,6 +36,16 @@ export default function About() {
           </div>
         </div>
       </Section>
+
+      <Section title="Resume">
+        <div className="w-full h-[1150px]">
+          <iframe
+            src="/resume.pdf#navpanes=0&zoom=100"
+            className="w-full h-full border-0"
+            title="Leo's Resume"
+          />
+        </div>
+      </Section>
     </main>
   );
 } 
