@@ -7,7 +7,7 @@ export default function About() {
       <Section title="Projects">
         <div className="prose max-w-none">
           <p className="text-lg mb-4">
-            Here are some of the projects I've worked on.
+            Here are some of the projects I&apos;ve worked on.
           </p>
         </div>
       </Section>

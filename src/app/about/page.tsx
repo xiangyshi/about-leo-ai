@@ -7,7 +7,7 @@ export default function About() {
       <Section title="About Me">
         <div className="prose max-w-none">
           <p className="text-lg mb-4">
-            Hi! I'm Leo, a passionate developer focused on building innovative solutions.
+            Hi! I&apos;m Leo, a passionate developer focused on building innovative solutions.
           </p>
           <p className="text-lg mb-4">
             I specialize in web development and love working with modern technologies
