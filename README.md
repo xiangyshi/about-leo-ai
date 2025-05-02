@@ -1,3 +1,11 @@
+# about-leo-ai
+---
+
+A personal, AI-powered website that helps visitors explore my work, projects, and background interactively. Built with a custom frontend and integrated with a Retrieval-Augmented Generation (RAG) system to answer questions about me using my uploaded content.
+
+This is the frontend repository for the project, handling the user interface, input/output interactions, and communication with the backend RAG API.
+
+---
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
