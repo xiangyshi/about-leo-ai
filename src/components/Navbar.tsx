@@ -9,6 +9,7 @@ export default function Navbar() {
         About Leo AI
       </Link>
       <div className="space-x-4">
+        <Link href="/" className="nav-link">Home</Link>
         <Link href="/about" className="nav-link">About</Link>
         <Link href="/projects" className="nav-link">Projects</Link>
         <Link href="https://github.com/xiangyshi" className="nav-link">GitHub</Link>
