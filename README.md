@@ -1,44 +1,52 @@
-# about-leo-ai
----
+# About Leo AI
 
-A personal, AI-powered website that helps visitors explore my work, projects, and background interactively. Built with a custom frontend and integrated with a Retrieval-Augmented Generation (RAG) system to answer questions about me using my uploaded content.
+A personal, AI-powered website that helps visitors explore my work, projects, and background interactively. Built with a modern tech stack and integrated with a Retrieval-Augmented Generation (RAG) system to provide intelligent responses about my professional journey.
 
-This is the frontend repository for the project, handling the user interface, input/output interactions, and communication with the backend RAG API.
+## Features
 
----
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+- Interactive AI-powered Q&A about my background and experience
+- Modern, responsive UI built with Next.js and Tailwind CSS
+- Real-time communication with backend RAG system
+- TypeScript for enhanced development experience
+
+## Tech Stack
+
+- **Frontend Framework**: Next.js 15.3.1
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS 4
+- **Language**: TypeScript
+- **Linting**: ESLint 9
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Development
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src` - Source code
+- `/public` - Static assets
+- `/app` - Next.js app directory (pages and components)
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+This is a personal project, but suggestions and feedback are welcome through issues and pull requests.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private - All rights reserved
