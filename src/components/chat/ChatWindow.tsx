@@ -91,7 +91,7 @@ const ChatWindow: React.FC = () => {
               <div className="text-center py-12">
                 <div className="text-6xl mb-4">🤖</div>
                 <p className="text-gray-600 text-lg mb-2">Ready to chat!</p>
-                <p className="text-gray-500">Ask me anything about Leo's background, projects, or experience.</p>
+                <p className="text-gray-500">Ask me anything about Leo&apos;s background, projects, or experience.</p>
               </div>
             )}
             

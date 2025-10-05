@@ -15,7 +15,7 @@ export default function Hero() {
             <div className="relative z-10">
                 <div className="floating mb-8">
                     <h1 className="text-7xl md:text-8xl font-bold mb-6 gradient-text">
-                        Hi, I'm Leo
+                        Hi, I&apos;m Leo
                         <span className="inline-block ml-4 text-6xl md:text-7xl">🤖</span>
                     </h1>
                 </div>
