@@ -69,19 +69,62 @@ const ChatWindow: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[600px] border border-gray-200 rounded-lg bg-white">
-      <div className="flex-1 overflow-y-auto p-4">
-        {messages.map((message) => (
-          <ChatMessage
-            key={message.id}
-            content={message.content}
-            role={message.role}
-            timestamp={message.timestamp}
-          />
-        ))}
-        <div ref={messagesEndRef} />
+    <div className="gradient-border max-w-4xl mx-auto">
+      <div className="bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
+        {/* Chat Header */}
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 border-b border-blue-200">
+          <div className="flex items-center gap-3">
+            <div className="w-3 h-3 bg-green-500 rounded-full pulse-glow"></div>
+            <h2 className="text-xl font-semibold gradient-text">AI Assistant</h2>
+            <div className="ml-auto flex gap-2">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-100"></div>
+              <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse delay-200"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Messages Area */}
+        <div className="flex flex-col h-[600px]">
+          <div className="flex-1 overflow-y-auto p-6 space-y-4">
+            {messages.length === 0 && (
+              <div className="text-center py-12">
+                <div className="text-6xl mb-4">🤖</div>
+                <p className="text-gray-600 text-lg mb-2">Ready to chat!</p>
+                <p className="text-gray-500">Ask me anything about Leo's background, projects, or experience.</p>
+              </div>
+            )}
+            
+            {messages.map((message) => (
+              <ChatMessage
+                key={message.id}
+                content={message.content}
+                role={message.role}
+                timestamp={message.timestamp}
+              />
+            ))}
+            
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-4 border border-purple-200 ai-glow-purple">
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce delay-100"></div>
+                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce delay-200"></div>
+                    </div>
+                    <span className="text-purple-600 text-sm">AI is thinking...</span>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <div ref={messagesEndRef} />
+          </div>
+          
+          <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
+        </div>
       </div>
-      <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
     </div>
   );
 };
