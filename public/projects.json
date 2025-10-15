@@ -60,7 +60,7 @@
       "image": "/images/gptve.svg",
       "links": {
         "demo": "https://topify-volume-estimator.vercel.app",
-        "github": "https://github.com/leo/topify-volume-estimator"
+        "github": "https://github.com/xiangyshi/Topify-Volume-Estimator"
       },
       "tags": ["Web App", "AI", "LLM", "Data Science", "Machine Learning"]
     }

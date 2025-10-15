@@ -1,13 +1,15 @@
 import React from "react";
 
+type SortOption = 'date-asc' | 'date-desc' | 'title-asc' | 'title-desc';
+
 interface TechStackFilterProps {
   allTechStacks: string[];
   selectedTechStacks: string[];
   onTechStackChange: (techStacks: string[]) => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
-  sortBy: string;
-  onSortChange: (sort: string) => void;
+  sortBy: SortOption;
+  onSortChange: (sort: SortOption) => void;
 }
 
 export default function TechStackFilter({
