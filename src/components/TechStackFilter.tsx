@@ -135,7 +135,7 @@ export default function TechStackFilter({
         <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Active filters:{" "}
-            {searchQuery && <span className="font-medium">Search: "{searchQuery}"</span>}
+            {searchQuery && <span className="font-medium">Search: &quot;{searchQuery}&quot;</span>}
             {searchQuery && selectedTechStacks.length > 0 && <span>, </span>}
             {selectedTechStacks.length > 0 && (
               <span className="font-medium">
