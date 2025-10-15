@@ -11,39 +11,85 @@ export default function About() {
       <Section title="About Me">
         <div className="prose max-w-none">
           <p className="text-lg mb-4">
-            Hi! I&apos;m Leo, a passionate developer focused on building innovative solutions.
+            Hi! I&apos;m Leo, a passionate full-stack developer and data engineer with a strong focus on building innovative solutions that bridge the gap between modern web technologies and intelligent data processing.
           </p>
           <p className="text-lg mb-4">
-            I specialize in full-stack development and data/ML engineering, creating end-to-end solutions
-            that combine modern web technologies with intelligent data processing.
+            With experience spanning from hackathon-winning AI applications to large-scale bioinformatics research, I specialize in creating end-to-end solutions that combine React/Next.js frontends with Python-based ML pipelines and cloud infrastructure.
+          </p>
+          <p className="text-lg mb-4">
+            I&apos;m particularly passionate about leveraging AI and machine learning to solve real-world problems, whether that&apos;s optimizing genomic algorithms for research institutions or building intelligent analytics dashboards for educational platforms.
           </p>
         </div>
       </Section>
       
       <Section title="Skills">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div>
-            <h3 className="text-xl font-semibold mb-2">Frontend</h3>
-            <ul className="list-disc list-inside">
-              <li>React / Next.js</li>
-              <li>TypeScript</li>
-              <li>Tailwind CSS</li>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600 dark:text-blue-400">Frontend</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                React.js / Next.js
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                TypeScript
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                TailwindCSS
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-2">Backend</h3>
-            <ul className="list-disc list-inside">
-              <li>Node.js / Python</li>
-              <li>APIs & Microservices</li>
-              <li>SQL / NoSQL Databases</li>
+            <h3 className="text-xl font-semibold mb-3 text-green-600 dark:text-green-400">Backend</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                Node.js / Express.js
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                Python / Flask / Django
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                REST APIs / GraphQL
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-2">Data & ML</h3>
-            <ul className="list-disc list-inside">
-              <li>Machine Learning</li>
-              <li>Data Processing</li>
-              <li>AI Integration</li>
+            <h3 className="text-xl font-semibold mb-3 text-purple-600 dark:text-purple-400">Data & AI</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                PyTorch / NumPy / Pandas
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                OpenAI API / LangChain
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                Hugging Face
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-3 text-orange-600 dark:text-orange-400">Cloud & DevOps</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                AWS / Azure
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Docker / CI/CD
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                PostgreSQL / MongoDB
+              </li>
             </ul>
           </div>
         </div>

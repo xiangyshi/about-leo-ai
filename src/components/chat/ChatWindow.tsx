@@ -21,7 +21,10 @@ const ChatWindow: React.FC = () => {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    // Only scroll to bottom if there are messages (not on initial load)
+    if (messages.length > 0) {
+      scrollToBottom();
+    }
   }, [messages]);
 
   const handleSendMessage = async (content: string) => {

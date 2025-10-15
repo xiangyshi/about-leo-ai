@@ -1,0 +1,68 @@
+[
+    {
+      "id": "safebark",
+      "title": "SafeBark (CMU-SV Hackathon – 1st Place)",
+      "date": "2025-10",
+      "description": "Developed a real-time NLP pipeline that transforms toxic social media comments into positive tone using GPT API and Hugging Face sentiment models. Won 1st place at CMU-SV Hackathon.",
+      "techStack": ["Node.js", "Hugging Face", "OpenAI API", "Chrome Extension"],
+      "image": "/images/safebark.jpg",
+      "links": {
+        "demo": "https://yuyue5555.github.io/CMU-Hackathon/showcase.html",
+        "github": "https://github.com/xiangyshi/SafeBark"
+      },
+      "tags": ["NLP", "Hackathon", "AI"]
+    },
+    {
+      "id": "epistasis-biclustering",
+      "title": "Epistasis Bi-Clustering Algorithm (Scripps Research)",
+      "date": "2024-12",
+      "description": "Optimized a bi-clustering algorithm for large-scale genomic epistasis analysis, reducing runtime from 16 hours to 10 minutes via code profiling, algorithmic refactoring, and vectorized operations.",
+      "techStack": ["Python", "NumPy", "Pandas", "SciPy"],
+      "image": "/images/scripps.png",
+      "links": {
+        "demo": "https://www.scripps.edu/",
+        "github": "https://github.com/xiangyshi/Biclustering_Epistasis"
+      },
+      "tags": ["Bioinformatics", "Algorithm Optimization", "Data Science"]
+    },
+    {
+      "id": "tcdb-classifier",
+      "title": "TCDB Classifier Pipeline (UC San Diego)",
+      "date": "2024-07",
+      "description": "Built a full ML pipeline for the Transporter Classification Database (TCDB), including data preprocessing, feature engineering, and model evaluation for large-scale protein classification.",
+      "techStack": ["Python", "Scikit-Learn", "Pandas", "Matplotlib"],
+      "image": "/images/saier.png",
+      "links": {
+        "demo": "https://www.tcdb.org/",
+        "github": "https://github.com/xiangyshi/TCDB-Preprocess-Pipeline"
+      },
+      "tags": ["Machine Learning", "Bioinformatics", "Data Science", "Visualization"]
+    },
+    {
+      "id": "teacher-analytics",
+      "title": "Teacher Analytics Dashboard & API Server (STEMz Learning)",
+      "date": "2024-10",
+      "description": "Developed a web dashboard for classroom analytics and AI-assisted student feedback generation. Used by 200+ teachers and students across multiple classrooms.",
+      "techStack": [ "MongoDB",  "Express.js", "React.js", "Node.js", "OpenAI API", "Vercel"],
+      "image": "/images/stemz.png",
+      "links": {
+        "demo": "https://www.stemzlearning.org/",
+        "github": "https://github.com/stemz-learning/core_server"
+      },
+      "tags": ["Education", "Analytics", "LLM", "Architecture", "Web App"]
+    },
+    {
+      "id": "chatgpt-volume-estimator",
+      "title": "ChatGPT Volume Estimator",
+      "date": "2025-10",
+      "description": "Created a web-based tool that uses GPT to estimate and visualize volume from textual or numeric inputs, featuring live inference and responsive design.",
+      "techStack": ["Flask", "Vercel", "OpenAI API", "HTML/CSS/JavaScript"],
+      "image": "/images/gptve.svg",
+      "links": {
+        "demo": "https://topify-volume-estimator.vercel.app",
+        "github": "https://github.com/leo/topify-volume-estimator"
+      },
+      "tags": ["Web App", "AI", "LLM", "Data Science", "Machine Learning"]
+    }
+  ]
+  
