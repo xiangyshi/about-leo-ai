@@ -9,7 +9,7 @@ interface ChatMessageProps {
   isTyping?: boolean;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ content, role, timestamp, isTyping = false }) => {
+const ChatMessage: React.FC<ChatMessageProps> = ({ content, role, timestamp }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isAnimating, setIsAnimating] = useState(false);
 

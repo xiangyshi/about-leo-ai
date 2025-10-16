@@ -64,7 +64,7 @@ export default function Hero() {
                 }}
             ></div>
         ));
-    }, []); // Empty dependency array means this only runs once
+    }, [particlePositions]); // Include particlePositions in dependencies
 
     return (
         <section className="relative text-center py-20 overflow-hidden">
