@@ -35,8 +35,8 @@ export default function TechStackFilter({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+    <div className="bg-gradient-to-r from-blue-50/90 to-purple-50/90 backdrop-blur-sm rounded-lg shadow-lg border border-blue-200/50 p-6 mb-8">
+      <h3 className="text-lg font-semibold gradient-text mb-4">
         Filter & Sort Projects
       </h3>
       
@@ -53,7 +53,7 @@ export default function TechStackFilter({
             placeholder="Search by project name, description, or tags..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+            className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-400 bg-white/80 backdrop-blur-sm text-gray-700 placeholder-gray-400 transition-all duration-300"
           />
         </div>
 
@@ -66,10 +66,10 @@ export default function TechStackFilter({
             {/* Date Sort */}
             <button
               onClick={() => onSortChange(sortBy === 'date-desc' ? 'date-asc' : 'date-desc')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 ${
                 sortBy.startsWith('date')
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'bg-white/80 text-gray-700 hover:bg-blue-100/80 hover:text-blue-600 border border-blue-200'
               }`}
               title={sortBy === 'date-desc' ? 'Sort by date (newest first)' : 'Sort by date (oldest first)'}
             >
@@ -84,10 +84,10 @@ export default function TechStackFilter({
             {/* Title Sort */}
             <button
               onClick={() => onSortChange(sortBy === 'title-asc' ? 'title-desc' : 'title-asc')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 ${
                 sortBy.startsWith('title')
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'bg-white text-gray-700 hover:bg-blue-100 hover:text-blue-600 border border-blue-200'
               }`}
               title={sortBy === 'title-asc' ? 'Sort by title (A-Z)' : 'Sort by title (Z-A)'}
             >
@@ -110,10 +110,10 @@ export default function TechStackFilter({
             <button
               key={techStack}
               onClick={() => handleTechStackToggle(techStack)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors duration-200 ${
+              className={`px-3 py-1 rounded-full text-sm transition-all duration-300 hover:scale-105 ${
                 selectedTechStacks.includes(techStack)
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                  ? "bg-blue-500 text-white shadow-md"
+                  : "bg-white/80 text-gray-700 hover:bg-blue-100/80 hover:text-blue-600 border border-blue-200"
               }`}
             >
               {techStack}
@@ -126,7 +126,7 @@ export default function TechStackFilter({
       {(selectedTechStacks.length > 0 || searchQuery) && (
         <button
           onClick={clearAllFilters}
-          className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
+          className="text-sm text-purple-600 hover:text-purple-800 underline transition-colors duration-300"
         >
           Clear all filters
         </button>

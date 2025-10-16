@@ -1,14 +1,41 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ChatMessageProps {
   content: string;
   role: 'user' | 'assistant';
   timestamp?: Date;
+  isTyping?: boolean;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ content, role, timestamp }) => {
+const ChatMessage: React.FC<ChatMessageProps> = ({ content, role, timestamp, isTyping = false }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    if (role === 'assistant' && content) {
+      setIsAnimating(true);
+      setDisplayedText('');
+      
+      // Simple character-by-character animation
+      let index = 0;
+      const timer = setInterval(() => {
+        if (index < content.length) {
+          setDisplayedText(content.slice(0, index + 1));
+          index++;
+        } else {
+          clearInterval(timer);
+          setIsAnimating(false);
+        }
+      }, 30); // Adjust speed here
+
+      return () => clearInterval(timer);
+    } else {
+      setDisplayedText(content);
+      setIsAnimating(false);
+    }
+  }, [content, role]);
   return (
     <div className={`flex ${role === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
       <div className={`
@@ -27,7 +54,12 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ content, role, timestamp }) =
           </div>
         )}
         
-        <p className="text-sm leading-relaxed">{content}</p>
+        <p className="text-sm leading-relaxed">
+          {role === 'assistant' ? displayedText : content}
+          {role === 'assistant' && isAnimating && (
+            <span className="inline-block w-0.5 h-4 bg-blue-500 ml-1 animate-pulse"></span>
+          )}
+        </p>
         
         {timestamp && (
           <span className="text-xs opacity-70 mt-2 block">

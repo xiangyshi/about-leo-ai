@@ -37,9 +37,6 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading = false 
             disabled={isLoading}
             className="w-full p-4 bg-white border border-blue-200 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ai-glow transition-all duration-300"
           />
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-          </div>
         </div>
         
         <button

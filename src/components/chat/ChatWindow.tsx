@@ -51,7 +51,7 @@ const ChatWindow: React.FC = () => {
       // Add assistant message
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: data.response,
+        content: data.response || 'Test response from AI',
         role: 'assistant',
         timestamp: new Date(),
       };
@@ -104,6 +104,7 @@ const ChatWindow: React.FC = () => {
                 content={message.content}
                 role={message.role}
                 timestamp={message.timestamp}
+                isTyping={isLoading && message.role === 'assistant'}
               />
             ))}
             

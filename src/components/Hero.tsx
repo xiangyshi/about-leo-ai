@@ -1,7 +1,71 @@
+"use client";
+
 // src/components/Hero.tsx
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 export default function Hero() {
+    const [displayedText, setDisplayedText] = useState('');
+    const [showCursor, setShowCursor] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+    const fullText = "Ask me anything about my journey...";
+
+    useEffect(() => {
+        setIsClient(true);
+        
+        // Start animation after a short delay to ensure hydration is complete
+        setTimeout(() => {
+            let index = 0;
+            const timer = setInterval(() => {
+                if (index < fullText.length) {
+                    setDisplayedText(fullText.slice(0, index + 1));
+                    setShowCursor(true);
+                    index++;
+                } else {
+                    clearInterval(timer);
+                    // Keep cursor visible and blinking
+                    setShowCursor(true);
+                }
+            }, 30); // Adjust speed here
+
+            return () => clearInterval(timer);
+        }, 100);
+    }, []);
+
+    // Fixed positions for particles to avoid hydration mismatch
+    const particlePositions = [
+        { left: 20, top: 15, delay: 0.5, duration: 2.8 },
+        { left: 80, top: 25, delay: 1.2, duration: 3.2 },
+        { left: 15, top: 60, delay: 0.8, duration: 2.5 },
+        { left: 75, top: 70, delay: 1.8, duration: 3.5 },
+        { left: 45, top: 30, delay: 0.3, duration: 2.9 },
+        { left: 90, top: 50, delay: 2.1, duration: 3.1 },
+        { left: 25, top: 85, delay: 1.5, duration: 2.7 },
+        { left: 65, top: 10, delay: 0.7, duration: 3.3 },
+        { left: 35, top: 75, delay: 1.9, duration: 2.6 },
+        { left: 85, top: 35, delay: 1.1, duration: 3.4 },
+        { left: 10, top: 40, delay: 0.4, duration: 2.8 },
+        { left: 55, top: 90, delay: 2.3, duration: 3.0 },
+        { left: 70, top: 55, delay: 1.6, duration: 2.4 },
+        { left: 30, top: 20, delay: 0.9, duration: 3.2 },
+        { left: 95, top: 80, delay: 2.0, duration: 2.9 }
+    ];
+
+    // Memoize the floating particles to prevent them from moving during typing animation
+    const floatingParticles = useMemo(() => {
+        return particlePositions.map((pos, i) => (
+            <div
+                key={i}
+                className="absolute w-2 h-2 bg-blue-300/40 rounded-full animate-pulse"
+                style={{
+                    left: `${pos.left}%`,
+                    top: `${pos.top}%`,
+                    animationDelay: `${pos.delay}s`,
+                    animationDuration: `${pos.duration}s`
+                }}
+            ></div>
+        ));
+    }, []); // Empty dependency array means this only runs once
+
     return (
         <section className="relative text-center py-20 overflow-hidden">
             {/* Subtle background elements */}
@@ -44,8 +108,24 @@ export default function Hero() {
                             </div>
                         </div>
                         
-                        <div className="typing-animation text-xl text-blue-600 font-mono">
-                            Ask me anything about my journey...
+                        <div className="text-xl text-blue-600 font-mono min-h-[1.5rem] flex items-center justify-center">
+                            <div className="relative">
+                                {/* Ghost text to reserve space including cursor */}
+                                <span className="invisible">{fullText}<span className="inline-block w-0.5 h-6 ml-1"></span></span>
+                                {/* Actual animated text */}
+                                <span className="absolute inset-0">
+                                    {isClient ? (
+                                        <>
+                                            {displayedText}
+                                            {showCursor && (
+                                                <span className="inline-block w-0.5 h-6 bg-blue-600 ml-1 animate-pulse"></span>
+                                            )}
+                                        </>
+                                    ) : (
+                                        fullText
+                                    )}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,18 +133,7 @@ export default function Hero() {
             
             {/* Subtle floating particles */}
             <div className="absolute inset-0 -z-10">
-                {[...Array(15)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute w-2 h-2 bg-blue-300/40 rounded-full animate-pulse"
-                        style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 3}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`
-                        }}
-                    ></div>
-                ))}
+                {floatingParticles}
             </div>
         </section>
     );

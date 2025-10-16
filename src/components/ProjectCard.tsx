@@ -92,7 +92,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 href={project.links.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-md transition-colors duration-200"
+                className="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105 font-medium"
               >
                 View Demo
               </Link>
@@ -102,7 +102,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-gray-600 hover:bg-gray-700 text-white text-center py-2 px-4 rounded-md transition-colors duration-200"
+                className="flex-1 bg-purple-500 hover:bg-purple-600 text-white text-center py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105 font-medium"
               >
                 View Code
               </Link>
