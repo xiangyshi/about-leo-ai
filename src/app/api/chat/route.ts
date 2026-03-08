@@ -1,13 +1,23 @@
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from "next/server";
 
 function getBackendConfig() {
-  // Prefer explicit BACKEND_URL; fallback to legacy or NEXT_PUBLIC if misconfigured
-  const rawUrl = process.env.BACKEND_URL;
-  const normalizedUrl = rawUrl && rawUrl !== "undefined" && rawUrl !== "null"
-    ? rawUrl.replace(/\/+$/, "")
-    : "";
+  // Prefer explicit BACKEND_URL; allow fallback to NEXT_PUBLIC_BACKEND_URL only as a last resort
+  const rawUrl =
+    process.env.BACKEND_URL ||
+    process.env.NEXT_PUBLIC_BACKEND_URL ||
+    "";
+  const normalizedUrl =
+    rawUrl && rawUrl !== "undefined" && rawUrl !== "null"
+      ? rawUrl.replace(/\/+$/, "")
+      : "";
 
-  const apiKey = process.env.API_KEY;
+  const apiKey =
+    process.env.BACKEND_API_KEY ||
+    process.env.API_KEY ||
+    process.env.NEXT_PUBLIC_BACKEND_API_KEY ||
+    "";
 
   return { backendUrl: normalizedUrl, apiKey };
 }
@@ -22,16 +32,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  if (!apiKey) {
-    return NextResponse.json(
-      { error: "Server misconfigured: API_KEY is not set" },
-      { status: 500 }
-    );
-  }
-
   try {
-    const body = await req.json();
-    const upstream = await fetch(`${backendUrl}/api/chat`, {
+    const body = await req.json().catch(() => ({}));
+    const upstreamUrl = `${backendUrl}/api/chat`;
+    const upstream = await fetch(upstreamUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,13 +45,41 @@ export async function POST(req: NextRequest) {
       cache: "no-store",
     });
 
-    const data = await upstream.json().catch(() => ({}));
-    return NextResponse.json(data, { status: upstream.status });
-  } catch (error) {
-    console.error("Proxy /api/chat error:", error);
+    const text = await upstream.text();
+    const contentType = upstream.headers.get("content-type") || "";
+    const maybeJson =
+      contentType.includes("application/json") ? safeParseJson(text) : null;
+
+    if (!upstream.ok) {
+      return NextResponse.json(
+        {
+          error: "Upstream error",
+          upstreamStatus: upstream.status,
+          upstreamUrl,
+          details: maybeJson ?? truncate(text, 1000),
+        },
+        { status: upstream.status }
+      );
+    }
+
+    return NextResponse.json(maybeJson ?? { ok: true });
+  } catch (error: any) {
+    console.error("Proxy /api/chat error:", error?.message || error);
     return NextResponse.json(
-      { error: "Failed to reach backend" },
+      { error: "Failed to reach backend", message: error?.message },
       { status: 502 }
     );
   }
+}
+
+function safeParseJson(text: string): any | null {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
+
+function truncate(text: string, max: number): string {
+  return text.length > max ? text.slice(0, max) + "…[truncated]" : text;
 }
