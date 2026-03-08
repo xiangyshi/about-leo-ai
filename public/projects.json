@@ -70,7 +70,7 @@
       "date": "2026-01",
       "description": "Developed an JetBrains IDE extension that helps students receive LLM-based feedback on their programming projects. Used at Carnegie Mellon University.",
       "techStack": ["GCP", "Gemini", "Python", "Java", "RabbitMQ"],
-      "image": "/images/gradiatorx.jpg",
+      "image": "/images/gradiatorx.png",
       "tags": ["Education", "AI", "LLM", "System Design"]
     }
   ]
