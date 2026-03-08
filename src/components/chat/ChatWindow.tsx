@@ -39,14 +39,10 @@ const ChatWindow: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const backendBaseUrl = process.env.BACKEND_URL;
-      const backendApiKey = process.env.API_KEY;
-      const response = await fetch(`${backendBaseUrl}/api/chat`, {
+      // Call internal API route which proxies to the backend
+      const response = await fetch(`/api/chat`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(backendApiKey ? { 'x-api-key': backendApiKey } : {}),
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: content }),
       });
 
