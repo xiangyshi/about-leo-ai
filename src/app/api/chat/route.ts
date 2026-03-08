@@ -63,16 +63,18 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(maybeJson ?? { ok: true });
-  } catch (error: any) {
-    console.error("Proxy /api/chat error:", error?.message || error);
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : String(error);
+    console.error("Proxy /api/chat error:", message);
     return NextResponse.json(
-      { error: "Failed to reach backend", message: error?.message },
+      { error: "Failed to reach backend", message },
       { status: 502 }
     );
   }
 }
 
-function safeParseJson(text: string): any | null {
+function safeParseJson(text: string): unknown | null {
   try {
     return JSON.parse(text);
   } catch {
