@@ -39,19 +39,26 @@ const ChatWindow: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // TODO: Replace with your actual API call
-      const response = await fetch('/api/chat', {
+      const backendBaseUrl = process.env.BACKEND_URL;
+      const backendApiKey = process.env.API_KEY;
+      const response = await fetch(`${backendBaseUrl}/api/chat`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(backendApiKey ? { 'x-api-key': backendApiKey } : {}),
+        },
         body: JSON.stringify({ message: content }),
       });
 
+      if (!response.ok) {
+        throw new Error(`Backend responded with ${response.status}`);
+      }
       const data = await response.json();
 
       // Add assistant message
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: data.response || 'Test response from AI',
+        content: data.answer || 'Test response from AI',
         role: 'assistant',
         timestamp: new Date(),
       };
@@ -61,7 +68,7 @@ const ChatWindow: React.FC = () => {
       // Add error message
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: 'Sorry, there was an error processing your message.',
+        content: 'Sorry, Leo forgot to pay me.',
         role: 'assistant',
         timestamp: new Date(),
       };
