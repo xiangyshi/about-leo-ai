@@ -24,6 +24,12 @@ function getBackendConfig() {
 
 export async function POST(req: NextRequest) {
   const { backendUrl, apiKey } = getBackendConfig();
+  const debug =
+    process.env.CHAT_PROXY_DEBUG === "1" ||
+    process.env.CHAT_PROXY_DEBUG === "true";
+  const requestId = `r${Date.now().toString(36)}-${Math.random()
+    .toString(36)
+    .slice(2, 8)}`;
 
   if (!backendUrl) {
     return NextResponse.json(
@@ -35,6 +41,13 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     const upstreamUrl = `${backendUrl}/api/chat`;
+    if (debug) {
+      console.info(
+        `[chat-proxy] start id=${requestId} upstreamUrl=${upstreamUrl} apiKeyPresent=${Boolean(
+          apiKey
+        )}`
+      );
+    }
     const upstream = await fetch(upstreamUrl, {
       method: "POST",
       headers: {
@@ -49,6 +62,15 @@ export async function POST(req: NextRequest) {
     const contentType = upstream.headers.get("content-type") || "";
     const maybeJson =
       contentType.includes("application/json") ? safeParseJson(text) : null;
+
+    if (debug) {
+      console.info(
+        `[chat-proxy] done  id=${requestId} status=${upstream.status} body=${truncate(
+          text,
+          2000
+        )}`
+      );
+    }
 
     if (!upstream.ok) {
       return NextResponse.json(
@@ -66,7 +88,7 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : String(error);
-    console.error("Proxy /api/chat error:", message);
+    console.error(`[chat-proxy] error id=${requestId}:`, message);
     return NextResponse.json(
       { error: "Failed to reach backend", message },
       { status: 502 }
