@@ -13,7 +13,7 @@ interface Project {
   description: string;
   techStack: string[];
   image: string;
-  links: {
+  links?: {
     demo?: string;
     github?: string;
   };

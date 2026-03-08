@@ -1,0 +1,9 @@
+{
+  // Prefer opening in external browser instead of in-editor preview
+  "livePreview.openPreviewTarget": "externalBrowser",
+  // Do not auto-open the in-editor web preview when a server starts
+  "livePreview.autoPreview": false,
+  // Fallback keys for other preview extensions (safe if extension not installed)
+  "local-web-preview.autoPreview": false,
+  "local-web-preview.openExternal": true
+}

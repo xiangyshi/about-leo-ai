@@ -9,7 +9,7 @@ interface Project {
   description: string;
   techStack: string[];
   image: string;
-  links: {
+  links?: {
     demo?: string;
     github?: string;
   };
@@ -87,9 +87,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           {/* Links */}
           <div className="flex gap-3">
-            {project.links.demo && (
+            {project.links?.demo && (
               <Link
-                href={project.links.demo}
+                href={project.links?.demo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105 font-medium"
@@ -97,9 +97,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 View Demo
               </Link>
             )}
-            {project.links.github && (
+            {project.links?.github && (
               <Link
-                href={project.links.github}
+                href={project.links?.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-purple-500 hover:bg-purple-600 text-white text-center py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105 font-medium"
