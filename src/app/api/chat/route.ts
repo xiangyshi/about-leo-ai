@@ -107,3 +107,20 @@ function safeParseJson(text: string): unknown | null {
 function truncate(text: string, max: number): string {
   return text.length > max ? text.slice(0, max) + "…[truncated]" : text;
 }
+
+// Debug probe to verify resolved backend URL from the browser.
+// Only responds when CHAT_PROXY_DEBUG is enabled; otherwise returns 404.
+export async function GET() {
+  const { backendUrl, apiKey } = getBackendConfig();
+  const debug =
+    process.env.CHAT_PROXY_DEBUG === "1" ||
+    process.env.CHAT_PROXY_DEBUG === "true";
+  if (!debug) {
+    return NextResponse.json({ ok: false }, { status: 404 });
+  }
+  return NextResponse.json({
+    ok: true,
+    backendUrl,
+    apiKeyPresent: Boolean(apiKey),
+  });
+}
